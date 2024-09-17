@@ -23,15 +23,18 @@ class CurrentWeatherWidget extends StatelessWidget {
   Widget temperatureAreaWidget() {
     return Row(
       children: [
-        Image.asset(
-          "assets/weather/${weatherDataCurrent.current.weather![0].icon}.png",
-          height: 80,
-          width: 80,
+        Container(
+          margin: const EdgeInsets.only(left: 23),
+          child: Image.asset(
+            "assets/weather/${weatherDataCurrent.current.weather![0].icon}.png",
+            height: 80,
+            width: 80,
+          )
         ),
         Container(
+          margin: const EdgeInsets.only(right:20),
           height: 50,
           width: 1,
-          color: CustomColors.dividerLine,
         ),
         RichText(
           text: TextSpan(
@@ -40,7 +43,7 @@ class CurrentWeatherWidget extends StatelessWidget {
                 text: "${weatherDataCurrent.current.temp!.toInt()}°C",
                 style: const TextStyle(
                   color:CustomColors.textColorBlack,
-                  fontSize: 68,
+                  fontSize: 65,
                   fontWeight: FontWeight.w600
                   ),
               ),

@@ -8,6 +8,7 @@ class GlobalController extends GetxController {
   final RxBool isLoading = true.obs;
   final RxDouble lat = 0.0.obs;
   final RxDouble long = 0.0.obs;
+  final RxInt currentIndex = 0.obs;
 
   // Instances
   RxBool checkLoading() => isLoading;
@@ -24,6 +25,8 @@ class GlobalController extends GetxController {
   void onInit() {
     if (isLoading.isTrue) {
       fetchLocation();
+    } else {
+      getIndext();
     }
     super.onInit();
   }
@@ -61,5 +64,8 @@ class GlobalController extends GetxController {
           isLoading.value = false;
         });
     });
+  }
+  RxInt getIndext(){
+    return currentIndex;
   }
 }

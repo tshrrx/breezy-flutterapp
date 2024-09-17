@@ -1,9 +1,13 @@
+import "package:breezy/additionals/custom_colors.dart";
 import "package:breezy/controller/global_controller.dart";
+import "package:breezy/widgets/comfortLevel.dart";
 import "package:breezy/widgets/current_weather_widget.dart";
 import "package:breezy/widgets/header.dart";
 import "package:breezy/widgets/hourly_weather_widget.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+
+import "../widgets/daily_weather_widget.dart";
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -40,6 +44,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   HourlyDataWidget(
                     weatherDataHourly: globalController.getData().getHourlyWeather()!,
                   ),
+                  DailyDataWidget(
+                    weatherDataDaily: globalController.getData().getDailyWeather()!,
+                  ),
+                  Container(
+                    height: 1,
+                    color: CustomColors.dividerLine,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ComfortLevel(weatherDataCurrent: globalController.getData().getCurrentWeather()!)
                 ],
               )
             )
