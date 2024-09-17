@@ -53,7 +53,6 @@ class GlobalController extends GetxController {
             desiredAccuracy: LocationAccuracy.high)
         .then((value) {
 
-
       lat.value = value.latitude;
       long.value = value.longitude;
 

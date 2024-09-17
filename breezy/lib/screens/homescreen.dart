@@ -1,6 +1,7 @@
 import "package:breezy/controller/global_controller.dart";
 import "package:breezy/widgets/current_weather_widget.dart";
 import "package:breezy/widgets/header.dart";
+import "package:breezy/widgets/hourly_weather_widget.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
@@ -22,7 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ? const Center(
                 child: CircularProgressIndicator(),
               )
-            : ListView(
+            : Center(
+            child: ListView(
                 scrollDirection: Axis.vertical,
                 children: [
                   const SizedBox(
@@ -30,10 +32,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const HeaderWidget(),
                   CurrentWeatherWidget(
-                    weatherDataCurrent: globalController.getData().getCurrentWeather()! ,
-                  )
+                    weatherDataCurrent: globalController.getData().getCurrentWeather()!,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  HourlyDataWidget(
+                    weatherDataHourly: globalController.getData().getHourlyWeather()!,
+                  ),
                 ],
-              )),
+              )
+            )
+        ),
       ),
     );
   }
